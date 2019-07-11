@@ -1,0 +1,23 @@
+* The maximum number of nodes at level ‘l’ of a binary tree is (2 ** l) - 1
+Level of root is 1.
+
+* Maximum number of nodes in a binary tree of height ‘h’ is (2 ** h) – 1
+
+* Full Binary Tree: A Binary Tree is full if every node has 0 or 2 children.
+               18
+           /       \
+         15         30
+        /  \        /  \
+      40    50    100   40
+
+* Complete Binary Tree: A Binary Tree is complete Binary Tree if all levels are completely filled except possibly the
+last level and the last level has all keys as left as possible.
+               18
+           /       \
+         15         30
+        /  \        /  \
+      40    50    100   40
+     /  \   /
+    8   7  9
+
+* Balanced Binary Tree: A binary tree is balanced if the height of the tree is O(Log n) where n is the number of nodes.
