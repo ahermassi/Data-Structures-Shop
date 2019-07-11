@@ -1,0 +1,21 @@
+from queue import LifoQueue
+
+if __name__ == '__main__':
+    stack = LifoQueue(6)
+    print('Stack size:', stack.qsize())
+    stack.put(5)
+    stack.put(9)
+    stack.put(1)
+    stack.put(7)
+    stack.put(9)
+    stack.put(10)
+    print('Pushed 6 elements ..')
+    print('Stack full:', stack.full())
+    print('Stack size:', stack.qsize())
+    print(stack.get())
+    print(stack.get())
+    print(stack.get())
+    print(stack.get())
+    print(stack.get())
+    print(stack.get())
+    print('Stack empty:', stack.empty())
