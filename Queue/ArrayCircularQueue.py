@@ -1,5 +1,6 @@
 """ For better understanding, please draw the circular queue as a pie. """
 
+
 class CircularQueue:
     def __init__(self, size):
         self.size = size
@@ -36,6 +37,38 @@ class CircularQueue:
             return temp
 
     def display(self):
-        
+        if self.front == -1:
+            print('Queue is empty. No elements to display')
+        elif self.rear >= self.front:
+            print('Elements in the circular queue are:', end=' ')
+            for i in range(self.front, self.rear + 1):
+                print(self.queue[i], end=' ')
+            print()
+        else:
+            print('Elements in the circular queue are:', end=' ')
+            for i in range(self.front, self.size):
+                print(self.queue[i], end=' ')
+            for i in range(0, self.rear + 1):
+                print(self.queue[i], end=' ')
+            print()
+
+
+if __name__ == '__main__':
+    circularQueue = CircularQueue(5)
+    circularQueue.enqueue(14)
+    circularQueue.enqueue(22)
+    circularQueue.enqueue(13)
+    circularQueue.enqueue(-6)
+    circularQueue.display()
+    print('Deleted value = ', circularQueue.dequeue())
+    print('Deleted value = ', circularQueue.dequeue())
+    circularQueue.display()
+    circularQueue.enqueue(9)
+    circularQueue.enqueue(20)
+    circularQueue.enqueue(5)
+    circularQueue.display()
+
+
+
 
 
