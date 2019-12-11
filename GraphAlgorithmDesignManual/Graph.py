@@ -11,7 +11,7 @@ class Graph:
         self.num_vertices = num_vertices  # number of vertices in graph
         self.num_edges = num_edges  # number of edges in graph
         self.edges = [None] * self.num_vertices  # adjacency info, array of edges; edges[i] is a linked list
-        # representing the adjacent edges of vertex i
+        # representing the adjacent vertices of vertex i
         self.degree = [0] * self.num_vertices  # out-degree of each vertex
         self.directed = directed  # is the graph directed?
 
@@ -30,19 +30,22 @@ def build_graph(directed):
 def insert_edge(graph, source, dest, directed):
     edge = Edge()
     edge.val = dest
-    edge.next = graph.edges[source]
-    graph.edges[source] = edge
+    edge.next = graph.edges[source]  # The new edge is inserted at the head of the appropriate adjacency list, since
+    # order doesn't matter
+    graph.edges[source] = edge  # The new edge is now the head of the linked list
     graph.degree[source] += 1
     if not directed:
-        insert_edge(graph, dest, source, True)
+        insert_edge(graph, dest, source, True)  # We use directed=True to avoid reconstructing the same edge in the
+        # next call of insert_edge()
     else:
         graph.num_edges += 1
 
 
 def print_graph(graph):
-    for i in range(graph.num_vertices):
+    for i in range(graph.num_vertices):  # Printing the associated is just a matter of two nested loops, one through
+        # vertices, the other through adjacent edges
         print('Vertex', i)
-        adjacent = graph.edges[i]
+        adjacent = graph.edges[i]  # This is the head of linked list of adjacent vertices
         while adjacent:
             print('Edge ' + str(i) + '->' + str(adjacent.val))
             adjacent = adjacent.next
