@@ -6,7 +6,7 @@ def dfs(source):
 
 
 def dfs_util(source):
-    if source in visited:
+    if visited[source]:
         return
     visited[source] = True
     print(source, end=' ')
