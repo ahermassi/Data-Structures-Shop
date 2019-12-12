@@ -1,46 +1,38 @@
-from collections import defaultdict
+from Graph import Graph
 
 
-# The implementation uses adjacency list representation of graph For an illustrated procedure, check out this link:
-# https://www.geeksforgeeks.org/depth-first-search-or-dfs-for-a-graph/
+def dfs(source):
+    dfs_util(source)
 
 
-class Graph:
-    def __init__(self):
-        self.graph = defaultdict(list)
+def dfs_util(source):
+    if source in visited:
+        return
+    visited[source] = True
+    print(source, end=' ')
+    neighbors = g[source]
+    for i in neighbors:
+        dfs_util(i)
 
-    def add_edge(self, u, v):
-        self.graph[u].append(v)
 
-    def dfs(self, source):
-        visited = [False] * len(self.graph)
-        self.dfs_util(source, visited)
-
-    def dfs_util(self, source, visited):
-        visited[source] = True
-        print(source, end=' ')
-        for i in self.graph[source]:
-            if not visited[i]:
-                self.dfs_util(i, visited)
-
-    def dfs_all(self):
-        """ ll the vertices may not be reachable from a given vertex (example Disconnected graph). To do complete DFS
-        traversal of such graphs, we must call dfs_util() for every vertex. """
-        visited = [False] * len(self.graph)
-        for v in self.graph.keys():
-            if not visited[v]:
-                self.dfs_util(v, visited)
+def dfs_all():
+    """ All the vertices may not be reachable from a given vertex (example disconnected graph). To do complete DFS
+    traversal of such graphs, we must call dfs_util() for every vertex. """
+    for vertex in g:
+        if not visited[vertex]:
+            dfs_util(vertex)
 
 
 if __name__ == '__main__':
-    graph = Graph()
+    graph = Graph(4, False)
     graph.add_edge(0, 1)
     graph.add_edge(0, 2)
     graph.add_edge(1, 2)
     graph.add_edge(2, 0)
     graph.add_edge(2, 3)
     graph.add_edge(3, 3)
+    n = graph.num_vertices
+    g = graph.graph  # Adjacency list representing the graph
+    visited = [False] * n
     print('Depth First Traversal starting from vertex 2:', end=' ')
-    graph.dfs(2)
-    print()
-    graph.dfs_all()
+    dfs(2)

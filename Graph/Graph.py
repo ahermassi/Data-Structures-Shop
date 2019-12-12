@@ -42,20 +42,3 @@ class Graph:
             for adj in adj_list:
                 edges.append((vertex, adj))
         return edges
-
-
-if __name__ == '__main__':
-    graph = Graph(5, True)
-    graph.add_edge('a', 'c')
-    graph.add_edge('b', 'c')
-    graph.add_edge('b', 'e')
-    graph.add_edge('c', 'd')
-    graph.add_edge('c', 'e')
-    graph.add_edge('c', 'a')
-    graph.add_edge('c', 'b')
-    graph.add_edge('e', 'b')
-    graph.add_edge('d', 'c')
-    graph.add_edge('e', 'c')
-    edges = graph.generate_edges()
-    for source, dest in edges:
-        print('{} -> {}'.format(source, dest))
