@@ -24,12 +24,19 @@ def create_graph():
     return graph
 
 
-def topological_sort(vertex):
+def topological_sort():
+    for i in range(n):  # Call the recursive helper function to store topological sort starting from all vertices 1 by 1
+        vertex = chr(i + ord('A'))  # Convert vertex number to vertex character label (specific to this example)
+        if vertex not in visited:
+            dfs(vertex)
+
+
+def dfs(vertex):
     visited.add(vertex)
     neighbors = g[vertex]
     for neighbor in neighbors:  # Recur for all the vertices adjacent to this vertex
         if neighbor not in visited:
-            topological_sort(neighbor)
+            dfs(neighbor)
     topological_ordering.append(vertex)
 
 
@@ -37,11 +44,7 @@ if __name__ == '__main__':
     graph = create_graph()
     n = graph.num_vertices
     g = graph.graph  # Adjacency list representing the graph
-    visited = set()
-    topological_ordering = []
-    for i in range(n):  # Call the recursive helper function to store topological sort starting from all vertices 1 by 1
-        vertex = chr(i + ord('A'))  # Convert vertex number to vertex character label (specific to this example)
-        if vertex not in visited:
-            topological_sort(vertex)
+    visited, topological_ordering = set(), []
+    topological_sort()
     topological_ordering = topological_ordering[::-1]
     print(topological_ordering)
