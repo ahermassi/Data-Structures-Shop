@@ -1,9 +1,9 @@
-class GraphWithAdjacencyMatrix:
+class GraphAdjacencyMatrix:
     def __init__(self, num_vertices, directed, base):
         self.num_vertices = num_vertices
         self.base = base  # Base denotes the smallest value of an edge id. This is useful for the matrix indexation
-        self.matrix = [[-1] * self.num_vertices for _ in range(self.num_vertices)]  # vertices x vertices 2D array.
-        # matrix[i][j] = 1 indicates that there is an edge from vertex i to vertex j
+        self.matrix = [[float('infinity')] * self.num_vertices for _ in range(self.num_vertices)] # matrix[i][j] = c
+        # indicates that there is an edge from vertex i to vertex j of cost c
         self.directed = directed
 
     def add_edge(self, u, v, cost=1):
@@ -20,7 +20,7 @@ class GraphWithAdjacencyMatrix:
 
 
 if __name__ == '__main__':
-    graph = GraphWithAdjacencyMatrix(6, True, 'a')
+    graph = GraphAdjacencyMatrix(6, True, 'a')
     graph.add_edge('a', 'e', 10)
     graph.add_edge('a', 'c', 20)
     graph.add_edge('c', 'b', 30)
