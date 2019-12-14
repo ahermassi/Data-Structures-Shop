@@ -47,6 +47,9 @@ if __name__ == '__main__':
     graph = create_graph()
     n = graph.num_vertices
     g = graph.graph  # Adjacency list representing the graph
-    distances = bellman_ford(0)
+    start_vertex = 0
+    distances = bellman_ford(start_vertex)
     print(distances)
+    for i in range(n):
+        print('The cost to get from node {} to {} is {}'.format(start_vertex, i, distances[i]))
 
