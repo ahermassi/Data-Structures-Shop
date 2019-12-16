@@ -39,6 +39,9 @@ class Graph:
     def add_weighted_edge(self, u, v, w):
         self.graph[u].append((v, w))
         self.degree[u] += 1
+        if not self.directed:
+            self.graph[v].append((u, w))
+            self.degree[v] += 1
             
     def generate_edges(self):
         edges = []
