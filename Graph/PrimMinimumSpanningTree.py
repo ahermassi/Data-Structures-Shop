@@ -49,7 +49,7 @@ def add_edges(vertex, heap):
 if __name__ == '__main__':
     graph = create_graph()
     n = graph.num_vertices
-    g = graph.graph  # Adjacency list representing the
+    g = graph.graph  # Adjacency list representing the graph
     visited = set()
     minimum_spanning_tree, cost = prim(0)
     print('MST cost: {}'.format(cost))
