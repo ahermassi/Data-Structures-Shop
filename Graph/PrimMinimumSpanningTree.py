@@ -22,6 +22,7 @@ def create_graph():
 
 
 def prim(start_vertex):
+    """ This is the eager implementation of Prim's using min heap. """
     mst, heap, cost = [], [], 0
     add_edges(start_vertex, heap)  # Add initial set of edges to the heap starting at start_vertex
     while heap and len(mst) < (n - 1):
@@ -41,7 +42,8 @@ def add_edges(vertex, heap):
     for neighbor in neighbors:
         dest, weight = neighbor
         if dest not in visited:  # Only add edges that point to unvisited nodes
-            heappush(heap, (weight, vertex, dest))
+            heappush(heap, (weight, vertex, dest))  # Even if this edge exists on the heap, the same edge with a lower
+            # cost will replace the old one
 
 
 if __name__ == '__main__':
